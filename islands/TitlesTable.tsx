@@ -84,7 +84,13 @@ export function TitlesTable({ years }: TitlesTableProps) {
         ? <div className="text-center py-4">Loading...</div>
         : error.value
         ? <div className="text-red-500 text-center py-4">{error.value}</div>
-        : <SortableTable initialData={data.value} columns={columns} />}
+        : (
+          <SortableTable
+            initialData={data.value}
+            columns={columns}
+            getRowLink={(row) => `/title/${encodeURI(row.title as string)}`}
+          />
+        )}
     </div>
   );
 }

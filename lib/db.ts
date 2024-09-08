@@ -67,3 +67,11 @@ export async function getAveragePayByTitle(year: number) {
     count: row.count!,
   }));
 }
+
+export async function getPeopleByTitle(title: string) {
+  const { data, error } = await supabase.from("employee_salaries").select(
+    "*",
+  ).eq("title", title).limit(10000);
+  throwError(error);
+  return data!;
+}

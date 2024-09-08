@@ -6,6 +6,7 @@ import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
 import * as $api_titles from "./routes/api/titles.ts";
 import * as $index from "./routes/index.tsx";
+import * as $title_title_ from "./routes/title/[title].tsx";
 import * as $title_index from "./routes/title/index.tsx";
 import * as $Chart from "./islands/Chart.tsx";
 import * as $SortableTable from "./islands/SortableTable.tsx";
@@ -18,6 +19,7 @@ const manifest = {
     "./routes/_app.tsx": $_app,
     "./routes/api/titles.ts": $api_titles,
     "./routes/index.tsx": $index,
+    "./routes/title/[title].tsx": $title_title_,
     "./routes/title/index.tsx": $title_index,
   },
   islands: {

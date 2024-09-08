@@ -38,9 +38,12 @@ type SortConfig = {
 type SortableTableProps = {
   initialData: DataItem[];
   columns: ColumnDefinition[];
+  getRowLink?: (row: DataItem) => string | null;
 };
 
-export function SortableTable({ initialData, columns }: SortableTableProps) {
+export function SortableTable(
+  { initialData, columns, getRowLink }: SortableTableProps,
+) {
   const data: Signal<DataItem[]> = useSignal(initialData);
   const sortConfig: Signal<SortConfig> = useSignal({
     key: null,
@@ -75,6 +78,37 @@ export function SortableTable({ initialData, columns }: SortableTableProps) {
     };
   }, []);
 
+  const renderRow = (item: DataItem, index: number) => {
+    const rowContent = (
+      <>
+        {columns.map((column) => (
+          <td key={column.key} className="px-6 py-4 whitespace-nowrap">
+            {(formatters[column.formatter || "default"])(
+              item[column.key],
+            )}
+          </td>
+        ))}
+      </>
+    );
+
+    if (getRowLink) {
+      const link = getRowLink(item);
+      if (link) {
+        return (
+          <tr
+            key={index}
+            className="hover:bg-gray-50 cursor-pointer"
+            onClick={() => window.location.href = link}
+          >
+            {rowContent}
+          </tr>
+        );
+      }
+    }
+
+    return <tr key={index}>{rowContent}</tr>;
+  };
+
   return (
     <div className="overflow-x-auto border rounded">
       <table className="min-w-full bg-white">
@@ -97,17 +131,7 @@ export function SortableTable({ initialData, columns }: SortableTableProps) {
           </tr>
         </thead>
         <tbody className="bg-white divide-y divide-gray-200">
-          {sortedData.value.map((item, index) => (
-            <tr key={index}>
-              {columns.map((column) => (
-                <td key={column.key} className="px-6 py-4 whitespace-nowrap">
-                  {(formatters[column.formatter || "default"])(
-                    item[column.key],
-                  )}
-                </td>
-              ))}
-            </tr>
-          ))}
+          {sortedData.value.map((item, index) => renderRow(item, index))}
         </tbody>
       </table>
     </div>
