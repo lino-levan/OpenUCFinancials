@@ -91,7 +91,6 @@ export function EmployeeTable() {
           <SortableTable
             initialData={data.value}
             columns={columns}
-            getRowLink={(row) => `/employee/${row.id}`}
           />
         )}
     </div>
