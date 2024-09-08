@@ -4,11 +4,14 @@
 
 import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
+import * as $api_employees from "./routes/api/employees.ts";
 import * as $api_titles from "./routes/api/titles.ts";
 import * as $index from "./routes/index.tsx";
+import * as $people from "./routes/people.tsx";
 import * as $title_title_ from "./routes/title/[title].tsx";
 import * as $title_index from "./routes/title/index.tsx";
 import * as $Chart from "./islands/Chart.tsx";
+import * as $EmployeeTable from "./islands/EmployeeTable.tsx";
 import * as $SortableTable from "./islands/SortableTable.tsx";
 import * as $TitlesTable from "./islands/TitlesTable.tsx";
 import { type Manifest } from "$fresh/server.ts";
@@ -17,13 +20,16 @@ const manifest = {
   routes: {
     "./routes/_404.tsx": $_404,
     "./routes/_app.tsx": $_app,
+    "./routes/api/employees.ts": $api_employees,
     "./routes/api/titles.ts": $api_titles,
     "./routes/index.tsx": $index,
+    "./routes/people.tsx": $people,
     "./routes/title/[title].tsx": $title_title_,
     "./routes/title/index.tsx": $title_index,
   },
   islands: {
     "./islands/Chart.tsx": $Chart,
+    "./islands/EmployeeTable.tsx": $EmployeeTable,
     "./islands/SortableTable.tsx": $SortableTable,
     "./islands/TitlesTable.tsx": $TitlesTable,
   },

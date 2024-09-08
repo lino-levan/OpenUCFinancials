@@ -86,7 +86,10 @@ export default async function Home() {
           Ok, that's all the fun facts for now.{" "}
           <a class="text-blue-500 hover:underline" href="/title">Click here</a>
           {" "}
-          to see data split by role.
+          to see data split by role.{" "}
+          <a class="text-blue-500 hover:underline" href="/people">Click here</a>
+          {" "}
+          to search for specific people.
         </p>
       </div>
     </div>

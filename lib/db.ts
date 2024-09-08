@@ -91,3 +91,19 @@ export async function getPeopleByTitle(title: string) {
   throwError(error);
   return data!;
 }
+
+export async function getPeopleByName(name: string) {
+  if (name) {
+    const { data, error } = await supabase.from("employee_salaries").select(
+      "*",
+    ).like("full_name", `%${name.toUpperCase()}%`).limit(100);
+    throwError(error);
+    return data!;
+  } else {
+    const { data, error } = await supabase.from("employee_salaries").select(
+      "*",
+    ).limit(100);
+    throwError(error);
+    return data!;
+  }
+}
