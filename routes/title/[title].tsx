@@ -4,9 +4,10 @@ import Chart from "islands/Chart.tsx";
 import { getAveragePayByTitle, getPeopleByTitle } from "lib/db.ts";
 import { FreshContext } from "$fresh/server.ts";
 import { SortableTable } from "islands/SortableTable.tsx";
+import { decodeBase32 } from "jsr:@std/encoding@0.213/base32";
 
 export default async function Home(_: Request, ctx: FreshContext) {
-  const title = decodeURI(ctx.params["title"]);
+  const title = new TextDecoder().decode(decodeBase32(ctx.params["title"]));
   const [people, payPerYear] = await Promise.all([
     getPeopleByTitle(title),
     getAveragePayByTitle(title),

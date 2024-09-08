@@ -1,6 +1,7 @@
 import { useSignal } from "@preact/signals";
 import { useEffect } from "preact/hooks";
 import { SortableTable } from "islands/SortableTable.tsx";
+import { encodeBase32 } from "jsr:@std/encoding@0.213/base32";
 
 type TitleData = {
   title: string;
@@ -98,7 +99,7 @@ export function TitlesTable({ years }: TitlesTableProps) {
           <SortableTable
             initialData={data.value}
             columns={columns}
-            getRowLink={(row) => `/title/${encodeURI(row.title as string)}`}
+            getRowLink={(row) => `/title/${encodeBase32(row.title as string)}`}
           />
         )}
     </div>
