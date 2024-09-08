@@ -80,6 +80,7 @@ export async function getAveragePayByTitle(title: string) {
     min_pay: row.min_pay!,
     max_pay: row.max_pay!,
     average_pay: row.average_pay!,
+    count: row.count!,
   }));
 }
 

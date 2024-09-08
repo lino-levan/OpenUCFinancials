@@ -57,6 +57,26 @@ export default async function Home(_: Request, ctx: FreshContext) {
             }],
           }}
         />
+        <Chart
+          type="line"
+          options={{
+            scales: {
+              y: {
+                beginAtZero: true,
+              },
+            },
+          }}
+          data={{
+            labels: payPerYear.map((year) => year.year),
+            datasets: [{
+              label: "# of People",
+              data: payPerYear.map((year) => year.count),
+              borderColor: ChartColors.Red,
+              backgroundColor: transparentize(ChartColors.Red, 0.5),
+              borderWidth: 1,
+            }],
+          }}
+        />
         <SortableTable
           initialData={people}
           columns={[

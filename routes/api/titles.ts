@@ -5,6 +5,6 @@ export const handler: Handlers = {
   async GET(req) {
     const year = new URL(req.url).searchParams.get("year");
     const rows = await getAveragePayByYear(year ? parseInt(year) : 2023);
-    return Response.json(rows);
+    return Response.json(rows.filter((row) => row.title));
   },
 };
