@@ -49,6 +49,10 @@ export function EmployeeTable() {
       name: "Last Name",
     },
     {
+      key: "title",
+      name: "Job Title",
+    },
+    {
       key: "location",
       name: "Location",
     },

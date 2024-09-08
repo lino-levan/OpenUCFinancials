@@ -13,7 +13,7 @@ export default async function Home(_: Request, ctx: FreshContext) {
   ]);
   return (
     <div class="w-screen h-screen items-center overflow-y-auto p-4">
-      <div class="max-w-screen-md mx-auto space-y-4">
+      <div class="max-w-screen-lg mx-auto space-y-4">
         <a
           href="/title"
           class="flex items-center gap-1 text-gray-700 hover:text-black hover:underline"
@@ -82,6 +82,7 @@ export default async function Home(_: Request, ctx: FreshContext) {
           columns={[
             { key: "first_name", name: "First Name" },
             { key: "last_name", name: "Last Name" },
+            { key: "location", name: "Location" },
             { key: "gross_pay", name: "Gross Pay", formatter: "currency" },
             { key: "year", name: "Year" },
           ]}
