@@ -59,6 +59,17 @@ export type Database = {
         };
         Relationships: [];
       };
+      pay_by_title: {
+        Row: {
+          average_pay: number | null;
+          count: number | null;
+          max_pay: number | null;
+          min_pay: number | null;
+          title: string | null;
+          year: number | null;
+        };
+        Relationships: [];
+      };
       total_cost: {
         Row: {
           cost: number | null;

@@ -54,7 +54,7 @@ export async function getCostPerLocation(year: number) {
 }
 
 export async function getAveragePayByYear(year: number) {
-  const { data, error } = await supabase.from("average_pay_by_title").select(
+  const { data, error } = await supabase.from("pay_by_title").select(
     "*",
   ).eq(
     "year",
@@ -63,18 +63,22 @@ export async function getAveragePayByYear(year: number) {
   throwError(error);
   return data!.map((row) => ({
     title: row.title!,
+    min_pay: row.min_pay!,
+    max_pay: row.max_pay!,
     average_pay: row.average_pay!,
     count: row.count!,
   }));
 }
 
 export async function getAveragePayByTitle(title: string) {
-  const { data, error } = await supabase.from("average_pay_by_title").select(
+  const { data, error } = await supabase.from("pay_by_title").select(
     "*",
   ).eq("title", title);
   throwError(error);
   return data!.map((row) => ({
     year: row.year!,
+    min_pay: row.min_pay!,
+    max_pay: row.max_pay!,
     average_pay: row.average_pay!,
   }));
 }

@@ -29,7 +29,7 @@ export default async function Home() {
         <h1 class="text-2xl">Welcome to OpenUCFinancials.</h1>
         <p>
           We have collected <b>{numberFormatter.format(rowCount)}</b>{" "}
-          bits of financial records and made them available for you to
+          rows of financial records and made them available for you to
           explore.<br />Here are some fun pieces of data:
         </p>
         <ul class="list-disc pl-4">

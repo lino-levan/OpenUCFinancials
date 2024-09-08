@@ -50,6 +50,16 @@ export function TitlesTable({ years }: TitlesTableProps) {
       formatter: "currency" as const,
     },
     {
+      key: "min_pay",
+      name: "Minimum Pay",
+      formatter: "currency" as const,
+    },
+    {
+      key: "max_pay",
+      name: "Maximum Pay",
+      formatter: "currency" as const,
+    },
+    {
       key: "count",
       name: "# of Employees",
     },
