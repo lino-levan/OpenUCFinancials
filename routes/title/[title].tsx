@@ -37,10 +37,22 @@ export default async function Home(_: Request, ctx: FreshContext) {
           data={{
             labels: payPerYear.map((year) => year.year),
             datasets: [{
-              label: "UC Salary",
+              label: "Average UC Salary",
               data: payPerYear.map((year) => year.average_pay),
               borderColor: ChartColors.Red,
               backgroundColor: transparentize(ChartColors.Red, 0.5),
+              borderWidth: 1,
+            }, {
+              label: "Minimum UC Salary",
+              data: payPerYear.map((year) => year.min_pay),
+              borderColor: ChartColors.Blue,
+              backgroundColor: transparentize(ChartColors.Blue, 0.5),
+              borderWidth: 1,
+            }, {
+              label: "Maximum UC Salary",
+              data: payPerYear.map((year) => year.max_pay),
+              borderColor: ChartColors.Green,
+              backgroundColor: transparentize(ChartColors.Green, 0.5),
               borderWidth: 1,
             }],
           }}
