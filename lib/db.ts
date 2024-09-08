@@ -44,3 +44,15 @@ export async function getTitleCount() {
     .limit(10000);
   return data!.length;
 }
+
+export async function getAveragePayByTitle(year: number) {
+  const { data } = await supabase.from("average_pay_by_title").select("*").eq(
+    "year",
+    year,
+  );
+  return data!.map((row) => ({
+    title: row.title!,
+    average_pay: row.average_pay!,
+    count: row.count!,
+  }));
+}

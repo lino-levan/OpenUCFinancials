@@ -8,15 +8,7 @@ import {
   getTotalCost,
   getYears,
 } from "lib/db.ts";
-
-const numberFormatter = new Intl.NumberFormat("en-US", {
-  currency: "USD",
-});
-
-const moneyFormatter = new Intl.NumberFormat("en-US", {
-  style: "currency",
-  currency: "USD",
-});
+import { moneyFormatter, numberFormatter } from "lib/formatters.ts";
 
 export default async function Home() {
   const [
@@ -24,14 +16,12 @@ export default async function Home() {
     totalCost,
     years,
     costPerYear,
-    titleCount,
     costPerLocation,
   ] = await Promise.all([
     getRowCount(),
     getTotalCost(),
     getYears(),
     getCostPerYear(),
-    getTitleCount(),
     getCostPerLocation(2023),
   ]);
   return (
@@ -93,13 +83,12 @@ export default async function Home() {
             }],
           }}
         />
-        <ul class="list-disc pl-4">
-          <li>
-            There are <b>{numberFormatter.format(titleCount)}</b>{" "}
-            roles tracked by the UC system. [NOT IMPLEMENTED] Click here to see
-            data split by role.
-          </li>
-        </ul>
+        <p>
+          Ok, that's all the fun facts for now.{" "}
+          <a class="text-blue-500 hover:underline" href="/title">Click here</a>
+          {" "}
+          to see data split by role.
+        </p>
       </div>
     </div>
   );

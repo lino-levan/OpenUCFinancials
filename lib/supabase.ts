@@ -53,6 +53,7 @@ export type Database = {
       average_pay_by_title: {
         Row: {
           average_pay: number | null;
+          count: number | null;
           title: string | null;
         };
         Relationships: [];
