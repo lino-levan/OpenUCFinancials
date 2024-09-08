@@ -7,7 +7,11 @@ let i = 1;
 for (let year = 2010; year <= 2023; year++) {
   const raw = await Bun.file(`./data/${year}.json`).json();
   for (const { cell } of raw) {
-    writer.write(`${i++},${cell[1]},"${cell[2]}","${cell[3]}","${cell[4]}","${cell[5]}",${cell[6]},${cell[7]},${cell[8]},${cell[9]}\n`);
+    writer.write(
+      `${i++},${cell[1]},"${cell[2]}","${cell[3]}","${cell[4]}","${cell[5]}",${
+        cell[6]
+      },${cell[7]},${cell[8]},${cell[9]}\n`,
+    );
   }
 }
 
