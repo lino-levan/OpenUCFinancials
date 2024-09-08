@@ -1,12 +1,16 @@
 import ArrowLeft from "icons/arrow-left.tsx";
-import { getPeopleByTitle, getYears } from "lib/db.ts";
-import { TitlesTable } from "islands/TitlesTable.tsx";
+import { ChartColors, transparentize } from "fresh-charts/utils.ts";
+import Chart from "islands/Chart.tsx";
+import { getAveragePayByTitle, getPeopleByTitle } from "lib/db.ts";
 import { FreshContext } from "$fresh/server.ts";
 import { SortableTable } from "islands/SortableTable.tsx";
 
 export default async function Home(_: Request, ctx: FreshContext) {
   const title = decodeURI(ctx.params["title"]);
-  const people = await getPeopleByTitle(title);
+  const [people, payPerYear] = await Promise.all([
+    getPeopleByTitle(title),
+    getAveragePayByTitle(title),
+  ]);
   return (
     <div class="w-screen h-screen items-center overflow-y-auto p-4">
       <div class="max-w-screen-md mx-auto space-y-4">
@@ -21,6 +25,26 @@ export default async function Home(_: Request, ctx: FreshContext) {
           Now we're looking at specific information about the title{" "}
           <strong>{title}</strong>.
         </p>
+        <Chart
+          type="line"
+          options={{
+            scales: {
+              y: {
+                beginAtZero: true,
+              },
+            },
+          }}
+          data={{
+            labels: payPerYear.map((year) => year.year),
+            datasets: [{
+              label: "UC Salary",
+              data: payPerYear.map((year) => year.average_pay),
+              borderColor: ChartColors.Red,
+              backgroundColor: transparentize(ChartColors.Red, 0.5),
+              borderWidth: 1,
+            }],
+          }}
+        />
         <SortableTable
           initialData={people}
           columns={[

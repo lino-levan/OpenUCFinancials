@@ -55,6 +55,7 @@ export type Database = {
           average_pay: number | null;
           count: number | null;
           title: string | null;
+          year: number | null;
         };
         Relationships: [];
       };
