@@ -50,9 +50,24 @@ export type Database = {
       };
     };
     Views: {
+      average_pay_by_title: {
+        Row: {
+          average_pay: number | null;
+          title: string | null;
+        };
+        Relationships: [];
+      };
       total_cost: {
         Row: {
           cost: number | null;
+        };
+        Relationships: [];
+      };
+      total_cost_by_location_and_year: {
+        Row: {
+          location: string | null;
+          total_cost: number | null;
+          year: number | null;
         };
         Relationships: [];
       };
