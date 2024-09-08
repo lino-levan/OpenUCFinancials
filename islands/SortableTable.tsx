@@ -82,7 +82,7 @@ export function SortableTable(
     const rowContent = (
       <>
         {columns.map((column) => (
-          <td key={column.key} className="px-6 py-4 whitespace-nowrap">
+          <td key={column.key} className="px-3 py-4 whitespace-nowrap">
             {(formatters[column.formatter || "default"])(
               item[column.key],
             )}
@@ -117,7 +117,7 @@ export function SortableTable(
             {columns.map((column) => (
               <th
                 key={column.key}
-                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer"
+                className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer"
                 onClick={() => requestSort(column.key)}
               >
                 {column.name}
