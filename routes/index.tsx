@@ -4,7 +4,6 @@ import {
   getCostPerLocation,
   getCostPerYear,
   getRowCount,
-  getTitleCount,
   getTotalCost,
   getYears,
 } from "lib/db.ts";
