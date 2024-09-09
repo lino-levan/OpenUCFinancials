@@ -8,6 +8,7 @@ import {
   getYears,
 } from "lib/db.ts";
 import { moneyFormatter, numberFormatter } from "lib/formatters.ts";
+import { currentYear } from "lib/constants.ts";
 
 export default async function Home() {
   const [
@@ -21,7 +22,7 @@ export default async function Home() {
     getTotalCost(),
     getYears(),
     getCostPerYear(),
-    getCostPerLocation(2023),
+    getCostPerLocation(currentYear),
   ]);
   return (
     <div class="w-screen h-screen items-center overflow-y-auto p-4">
@@ -67,8 +68,9 @@ export default async function Home() {
           <li>
             There are <b>{numberFormatter.format(costPerLocation.length)}</b>
             {" "}
-            locations tracked by the UC system in 2023. Here is the cost
-            breakdown for each one in 2023:
+            locations tracked by the UC system in{" "}
+            {currentYear}. Here is the cost breakdown for each one in{" "}
+            {currentYear}:
           </li>
         </ul>
         <Chart
